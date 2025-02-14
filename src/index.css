@@ -230,8 +230,16 @@ body {
   grid-template-columns: 1fr;
   gap: var(--spacing-6);
 }
+.filters__button {
+  display: flex;
+  justify-content: flex-end;
 
+  color: var(--color-primary);
+}
 @media (min-width: 768px) {
+  .filters__button {
+    display: none;
+  }
   .header__title {
     display: block;
   }

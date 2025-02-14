@@ -185,30 +185,12 @@ const HomePage: React.FC = () => {
                 Loading Guardian articles...
               </div>
             )}
-            {newsIsLoading && (
-              <div className="loading-indicator">Loading News API articles</div>
-            )}
-            {nytIsLoading && (
-              <div className="loading-indicator">
-                Loading New York Times articles
-              </div>
-            )}
+            {newsIsLoading && <div className="loading-indicator"></div>}
+            {nytIsLoading && <div className="loading-indicator"></div>}
 
-            {guardianError && (
-              <div className="error-indicator">
-                Error loading Guardian articles
-              </div>
-            )}
-            {newsError && (
-              <div className="error-indicator">
-                Error loading News API articles
-              </div>
-            )}
-            {nytError && (
-              <div className="error-indicator">
-                Error loading New York Times articles
-              </div>
-            )}
+            {guardianError && <div className="error-indicator"></div>}
+            {newsError && <div className="error-indicator"></div>}
+            {nytError && <div className="error-indicator"></div>}
           </div>
 
           <div className="layout">
