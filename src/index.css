@@ -62,6 +62,7 @@ body {
 }
 
 .header__title {
+  display: none;
   font-size: 1.5rem;
   font-weight: bold;
 }
@@ -231,6 +232,9 @@ body {
 }
 
 @media (min-width: 768px) {
+  .header__title {
+    display: block;
+  }
   .news-grid {
     grid-template-columns: repeat(2, 1fr);
   }
