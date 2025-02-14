@@ -1,6 +1,6 @@
 const serverConfig = {
   baseUrl: "https://next-eight-phi-26.vercel.app",
-  baseUrlApi: "http://localhost:3000/api",
+  baseUrlApi: "https://next-eight-phi-26.vercel.app/api",
 };
 
 const colors = [
