@@ -1,4 +1,4 @@
-import { Globe, Newspaper, User } from "lucide-react";
+import { Globe, Newspaper, Settings, User } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 export default function Header() {
@@ -20,6 +20,7 @@ export default function Header() {
               <User size={16} />
               You
             </NavLink>
+
             <NavLink
               to="/search"
               className={({ isActive }) =>
@@ -28,6 +29,15 @@ export default function Header() {
             >
               <Globe size={16} />
               Explore
+            </NavLink>
+            <NavLink
+              to="/preferences"
+              className={({ isActive }) =>
+                `header__link ${isActive ? "header__link--active" : ""}`
+              }
+            >
+              <Settings size={16} />
+              Settings
             </NavLink>
           </nav>
         </div>

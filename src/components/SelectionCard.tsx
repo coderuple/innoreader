@@ -4,6 +4,7 @@ interface SelectionCardProps {
   title: string;
   imageUrl?: string;
   isSelected: boolean;
+  icon?: React.ReactNode;
   onClick: () => void;
 }
 
@@ -11,6 +12,7 @@ export function SelectionCard({
   title,
   imageUrl,
   isSelected,
+  icon,
   onClick,
 }: SelectionCardProps) {
   return (
@@ -27,10 +29,16 @@ export function SelectionCard({
           <div className="selection-card--selected"></div>
         )}
         <div className="selection-card__overlay">
-          {isSelected ? (
-            <Check className="selection-card__icon" size={24} />
+          {icon ? (
+            icon
           ) : (
-            <Plus className="selection-card__icon" size={24} />
+            <>
+              {isSelected ? (
+                <Check className="selection-card__icon" size={24} />
+              ) : (
+                <Plus className="selection-card__icon" size={24} />
+              )}
+            </>
           )}
           <h3 className="selection-card__title">{title}</h3>
         </div>

@@ -5,6 +5,7 @@ import MyFeedPage from "./pages/MyFeedPage";
 import { useGetNewsSourcesQuery } from "./features/articles/newsApi";
 import { useEffect } from "react";
 import { useAppDispatch } from "./hooks";
+import PreferencesPage from "./pages/PreferencePage";
 
 function App() {
   const { data: sources = [] } = useGetNewsSourcesQuery();
@@ -24,6 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MyFeedPage />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="/preferences" element={<PreferencesPage />} />
       </Routes>
     </BrowserRouter>
   );

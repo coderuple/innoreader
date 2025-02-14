@@ -11,33 +11,19 @@ import { SelectionCard } from "./SelectionCard";
 import { useGetNewsSourcesQuery } from "../features/articles/newsApi";
 import { NewsApiSource } from "./NewsApiSource";
 import { useAppDispatch } from "../hooks";
-
-// const sources: NewsSource[] = [
-//   {
-//     id: "guardian",
-//     name: "The Guardian",
-//     imageUrl: "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
-//     searchKey: "guardian-api",
-//   },
-//   {
-//     id: "nytimes",
-//     name: "New York Times",
-//     imageUrl: "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
-//     searchKey: "nyt-api",
-//   },
-// ];
+import { RefreshCcw } from "lucide-react";
 
 const DEFAULT_SOURCES: NewsSource[] = [
   {
     id: "guardian",
     name: "The Guardian",
-    imageUrl: "/assets/guardian.jpeg",
+    // imageUrl: "./assets/guardian.jpeg",
     searchKey: "guardian-api",
   },
   {
     id: "nytimes",
     name: "New York Times",
-    imageUrl: "/assets/nyt.jpg",
+    // imageUrl: "/src/assets/nyt.jpg",
     searchKey: "nyt-api",
   },
 ];
@@ -77,7 +63,7 @@ const categories: Category[] = [
     id: "entertainment",
     label: "Entertainment",
     searchKey: "news-api",
-    imageUrl: "https://images.unsplash.com/photo-1603190287605-e6ade32fa852",
+    imageUrl: "https://images.unsplash.com/photo-16x03190287605-e6ade32fa852",
   },
 ];
 
@@ -103,8 +89,10 @@ export function PreferencesPage() {
   const [currentChunkIndex, setCurrentChunkIndex] = useState(0);
   const CHUNK_SIZE = 10;
 
-  const [loadedSources, setLoadedSources] =
-    useState<NewsSource[]>(DEFAULT_SOURCES);
+  const [loadedSources, setLoadedSources] = useState<NewsSource[]>([
+    ...DEFAULT_SOURCES,
+    ...savedPreferences.preferredSources,
+  ]);
 
   const filteredApiSources = useMemo(() => {
     return apiSources.filter(
@@ -116,10 +104,21 @@ export function PreferencesPage() {
   useEffect(() => {
     if (filteredApiSources.length > 0) {
       const initialSources = filteredApiSources.slice(0, CHUNK_SIZE);
-      setLoadedSources(() => [
-        ...savedPreferences.preferredSources,
-        ...initialSources,
-      ]);
+      setLoadedSources(() => {
+        const defaultAndPreferred = [
+          ...DEFAULT_SOURCES,
+          ...savedPreferences.preferredSources,
+        ];
+        const uniqueSources = [
+          ...new Map(
+            [...defaultAndPreferred, ...initialSources].map((item) => [
+              item.id,
+              item,
+            ])
+          ).values(),
+        ];
+        return uniqueSources;
+      });
       setCurrentChunkIndex(1);
     }
   }, [filteredApiSources, savedPreferences.preferredSources]);
@@ -213,13 +212,21 @@ export function PreferencesPage() {
                         />
                       )
                     )}
+                    {filteredApiSources.length > 0 && (
+                      <SelectionCard
+                        icon={
+                          <RefreshCcw
+                            className="selection-card__icon"
+                            size={24}
+                          />
+                        }
+                        key="load-more"
+                        title="Load More Sources"
+                        isSelected={true}
+                        onClick={() => getNextSourcesChunk()}
+                      />
+                    )}
                   </div>
-                  <button
-                    className="chunk-button"
-                    onClick={getNextSourcesChunk}
-                  >
-                    Load More Sources
-                  </button>
                 </>
               )}
             </section>

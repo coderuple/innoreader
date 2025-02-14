@@ -80,7 +80,7 @@ export interface GuardianArticleType {
 }
 
 export interface ApiQuery {
-  query: string | null;
+  query: string;
   from: string | null;
   to: string | null;
   source?: NewsSource;

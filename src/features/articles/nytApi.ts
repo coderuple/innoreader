@@ -11,7 +11,7 @@ export const nytApi = createApi({
     baseUrl: "https://api.nytimes.com/svc/search/v2/articlesearch.json",
   }),
   endpoints: (builder) => ({
-    getNYTArticles: builder.query<Article[], ApiQuery>({
+    getNYTArticles: builder.query<Article[] | null, ApiQuery>({
       query: ({ query, from, to }) => {
         const params: Record<string, string> = {
           q: query || "",
@@ -61,7 +61,7 @@ export const nytApi = createApi({
         dispatch(
           addSource({ id: "nyt", name: "New York Times", searchKey: "nyt-api" })
         );
-        result.data.map((article: Article) => {
+        result?.data?.map((article: Article) => {
           if (article.category?.id && article.category?.label) {
             dispatch(
               addCategory({

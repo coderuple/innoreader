@@ -215,7 +215,16 @@ body {
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
 }
 
+.section-title.category {
+  margin-top: var(--spacing-6);
+}
+
 .news-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+.news-grid-3 {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-6);
@@ -224,6 +233,9 @@ body {
 @media (min-width: 768px) {
   .news-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .news-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -262,7 +274,14 @@ body {
   font-weight: 600;
   margin-bottom: var(--spacing-2);
 }
+.brand-text {
+  color: var(--color-primary);
+}
 
+.category-section {
+  margin-top: var(--spacing-6);
+  margin-bottom: var(--spacing-6);
+}
 .news-card__description {
   color: var(--color-text-secondary);
   margin-bottom: var(--spacing-4);
