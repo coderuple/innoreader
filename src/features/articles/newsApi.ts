@@ -5,15 +5,11 @@ import { addSource } from "../sources/slice";
 // import { addCategory, addSource } from "../filter/slice";
 
 // const apiKey = "0ddb94b973ce499fa95bcaf95a4efe91";
-const apiKey = "ca9d4cc01e264339891627c138cd7124";
+const apiKey = "73bc66ed028d40b28e50d50c078f8c9f";
 export const newsApi = createApi({
   reducerPath: "newsApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://newsapi.org/v2",
-    prepareHeaders: (headers) => {
-      headers.set("Authorization", `Bearer ${apiKey}`);
-      return headers;
-    },
   }),
   endpoints: (builder) => ({
     getNewsArticles: builder.query<Article[], ApiQuery>({
@@ -23,6 +19,7 @@ export const newsApi = createApi({
           sortBy: "publishedAt",
         };
 
+        params["apiKey"] = apiKey;
         if (!query && !source && !category) {
           params.country = "us";
         }
@@ -90,7 +87,7 @@ export const newsApi = createApi({
       },
     }),
     getNewsSources: builder.query<NewsSource[], void>({
-      query: () => `/sources`,
+      query: () => `/sources?apiKey=${apiKey}`,
       transformResponse: (response: { sources: NewsSource[] }) => {
         return response.sources.map((source) => ({
           id: source.id,
