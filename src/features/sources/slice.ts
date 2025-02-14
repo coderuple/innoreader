@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { NewsSource } from "../../types";
 
+// TODO: Add a reducer to set the sources
 const sourcesSlice = createSlice({
   name: "sources",
   initialState: [] as NewsSource[],
