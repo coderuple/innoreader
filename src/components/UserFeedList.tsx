@@ -3,6 +3,7 @@
 
 import { useAppSelector } from "../hooks";
 import { RootState } from "../store";
+import { NewsCarousel } from "./NewsCarousel";
 import UserFeed from "./UserFeed";
 import UserFeedCategory from "./UserFeedCategory";
 
@@ -15,19 +16,24 @@ const UserFeedList = () => {
 
   const combinedElements: React.ReactNode[] = [];
 
+  combinedElements.push(
+    <NewsCarousel
+      categories={preferredCategories}
+      key={`carousel-${preferredCategories.length}`}
+    />
+  );
+
   preferredSources.forEach((source, index) => {
     combinedElements.push(
       <UserFeed source={source} key={`feed-${source.id}-${index}`} />
     );
 
-    if ((index + 1) % 2 === 0 && preferredCategories[Math.floor(index / 2)]) {
-      combinedElements.push(
-        <UserFeedCategory
-          category={preferredCategories[Math.floor(index / 2)]}
-          key={`category-${index}`}
-        />
-      );
-    }
+    combinedElements.push(
+      <UserFeedCategory
+        categories={preferredCategories}
+        key={`category-${index}`}
+      />
+    );
   });
 
   return <>{combinedElements}</>;

@@ -35,7 +35,7 @@ export const nytApi = createApi({
       },
 
       transformResponse: (response: NytArticleType) => {
-        console.log("nyt response", response);
+        // console.log("nyt response", response);
         return response.response.docs.map((doc) => {
           return {
             source: { id: "nyt", name: "New York Times", searchKey: "nyt-api" },

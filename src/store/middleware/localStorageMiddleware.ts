@@ -22,8 +22,8 @@ export const localStorageMiddleware: Middleware =
           hasSetPreferences: state.preferences.hasSetPreferences,
         };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(preferencesToSave));
-      } catch (error) {
-        console.error("Failed to save preferences to localStorage:", error);
+      } catch {
+        //console.error("Failed to save preferences to localStorage:", error);
       }
     }
 

@@ -13,6 +13,7 @@ export function NewsCard({ article, style }: NewsCardProps) {
       {article.urlToImage && (
         <img
           src={article.urlToImage}
+          loading="lazy"
           alt={article.title}
           className="news-card__image"
         />

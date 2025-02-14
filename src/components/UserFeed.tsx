@@ -54,10 +54,16 @@ const UserFeed = ({ source }: { source: NewsSource }) => {
   if (isError) return <div></div>;
 
   return (
-    <section className="news-grid category-section">
-      {data.map((article) => (
-        <NewsCard key={article.url} article={article} />
-      ))}
+    <section className=" category-section">
+      <h2 className="section-title category">From {source.name}</h2>
+      <div className="news-grid">
+        {data.map((article) => (
+          <NewsCard
+            key={`${article.url}-${article.source.id}-${article.publishedAt}`}
+            article={article}
+          />
+        ))}
+      </div>
     </section>
   );
 };

@@ -41,6 +41,7 @@ export interface Category {
   id: string;
   label: string;
   searchKey: SearchKey;
+  color?: string;
 
   imageUrl?: string;
 }

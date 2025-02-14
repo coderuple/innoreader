@@ -12,60 +12,11 @@ import { useGetNewsSourcesQuery } from "../features/articles/newsApi";
 import { NewsApiSource } from "./NewsApiSource";
 import { useAppDispatch } from "../hooks";
 import { RefreshCcw } from "lucide-react";
+import { config } from "../../config";
 
-const DEFAULT_SOURCES: NewsSource[] = [
-  {
-    id: "guardian",
-    name: "The Guardian",
-    // imageUrl: "./assets/guardian.jpeg",
-    searchKey: "guardian-api",
-  },
-  {
-    id: "nytimes",
-    name: "New York Times",
-    // imageUrl: "/src/assets/nyt.jpg",
-    searchKey: "nyt-api",
-  },
-];
+const DEFAULT_SOURCES: NewsSource[] = config.sources as NewsSource[];
 
-const categories: Category[] = [
-  {
-    id: "business",
-    label: "Business",
-    searchKey: "news-api",
-    imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
-  },
-  {
-    id: "technology",
-    label: "Technology",
-    searchKey: "news-api",
-    imageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475",
-  },
-  {
-    id: "sports",
-    label: "Sports",
-    searchKey: "news-api",
-    imageUrl: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211",
-  },
-  {
-    id: "science",
-    label: "Science",
-    searchKey: "news-api",
-    imageUrl: "https://images.unsplash.com/photo-1507413245164-6160d8298b31",
-  },
-  {
-    id: "health",
-    label: "Health",
-    searchKey: "news-api",
-    imageUrl: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528",
-  },
-  {
-    id: "entertainment",
-    label: "Entertainment",
-    searchKey: "news-api",
-    imageUrl: "https://images.unsplash.com/photo-16x03190287605-e6ade32fa852",
-  },
-];
+const categories: Category[] = config.categories as Category[];
 
 export function PreferencesPage() {
   const dispatch = useAppDispatch();

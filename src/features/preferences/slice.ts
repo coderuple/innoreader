@@ -20,8 +20,8 @@ const loadInitialState = (): PreferencesState => {
         hasSetPreferences: parsed.hasSetPreferences || false,
       };
     }
-  } catch (error) {
-    console.error("Error loading preferences from localStorage:", error);
+  } catch {
+    // console.error("Error loading preferences from localStorage:", error);
   }
 
   return {
