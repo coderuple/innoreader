@@ -3,18 +3,19 @@ import { ApiQuery, Article, GuardianArticleType } from "../../types";
 import { addSource } from "../sources/slice";
 import { format } from "date-fns";
 import { addCategory } from "../filter/slice";
+import { config } from "../../../config";
 
 export const guardianApi = createApi({
   reducerPath: "guardianApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://content.guardianapis.com",
+    baseUrl: config.api.guardianApi.baseUrl,
   }),
   endpoints: (builder) => ({
     getGuardianArticles: builder.query<Article[], ApiQuery>({
       query: ({ query = "", from, to }) => {
         const params: Record<string, string> = {
           q: query || "",
-          "api-key": "995a43de-d37a-4aac-aade-46965a2bc22d",
+          "api-key": config.api.guardianApi.apiKey,
           "show-fields": "thumbnail",
           "order-by": "newest",
         };

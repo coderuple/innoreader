@@ -18,16 +18,15 @@ export const config = {
   },
   api: {
     guardianApi: {
-      apiKey: "test",
-      baseUrl: "https://content.guardianapis.com/search",
+      apiKey: "995a43de-d37a-4aac-aade-46965a2bc22d",
+      baseUrl: "https://content.guardianapis.com",
       imageUrl: `${serverConfig.baseUrl}/images/guardian.jpg`,
     },
     newsApi: {
-      apiKey: "test",
       baseUrl: "https://newsapi.org/v2/top-headlines",
     },
     nyTimesApi: {
-      apiKey: "test",
+      apiKey: "dJAm2TtCuedAQGi0n3FRxLCNyGtyfIQO",
       baseUrl: "https://api.nytimes.com/svc/search/v2/articlesearch.json",
       imageUrl: `${serverConfig.baseUrl}/images/nytimes.jpg`,
     },

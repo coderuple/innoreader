@@ -236,7 +236,11 @@ body {
 
   color: var(--color-primary);
 }
+
 @media (min-width: 768px) {
+  .carousel__link {
+    padding: var(--spacing-3) var(--spacing-3) !important;
+  }
   .filters__button {
     display: none;
   }
@@ -713,7 +717,7 @@ body {
   gap: var(--spacing-2);
   background-color: var(--color-white);
   color: var(--color-text);
-  padding: var(--spacing-3) var(--spacing-6);
+  padding: var(--spacing-1) var(--spacing-3);
   border-radius: var(--border-radius);
   text-decoration: none;
   font-weight: 500;
@@ -807,4 +811,25 @@ body {
   .carousel__overlay {
     padding: var(--spacing-4);
   }
+}
+
+.load-more-button {
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.load-more-button:hover {
+  background-color: #e0e0e0;
+}
+
+.load-more-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }

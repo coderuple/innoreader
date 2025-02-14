@@ -3,12 +3,13 @@ import { ApiQuery, Article, NytArticleType } from "../../types";
 import { format, subDays } from "date-fns";
 import { addSource } from "../sources/slice";
 import { addCategory } from "../filter/slice";
+import { config } from "../../../config";
 
-const apiKey = "dJAm2TtCuedAQGi0n3FRxLCNyGtyfIQO";
+const apiKey = config.api.nyTimesApi.apiKey;
 export const nytApi = createApi({
   reducerPath: "nytApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://api.nytimes.com/svc/search/v2/articlesearch.json",
+    baseUrl: config.api.nyTimesApi.baseUrl,
   }),
   endpoints: (builder) => ({
     getNYTArticles: builder.query<Article[] | null, ApiQuery>({
