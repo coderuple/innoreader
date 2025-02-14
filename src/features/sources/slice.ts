@@ -1,13 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { NewsSource } from "../../types";
 
-const initialState: NewsSource[] = [];
 const sourcesSlice = createSlice({
   name: "sources",
-  initialState,
+  initialState: [] as NewsSource[],
   reducers: {
-    setSources: (state, action: PayloadAction<NewsSource[]>) => {
-      return (state = action.payload);
+    setSources: (_state, action: PayloadAction<NewsSource[]>) => {
+      return action.payload;
     },
     addSource: (state, action: PayloadAction<NewsSource>) => {
       const exists = state.some(
