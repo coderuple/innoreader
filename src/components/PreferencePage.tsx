@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Category, NewsSource } from "../types";
 import {
   setPreferredSources,
